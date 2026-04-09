@@ -35,6 +35,7 @@ Requirements:
 
 import argparse
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -42,6 +43,16 @@ from pathlib import Path
 
 SKILL_DIR     = Path(__file__).parent.parent
 TEMPLATES_DIR = SKILL_DIR / "templates"
+
+# Ensure Windows Node.js directories are on the PATH for subprocess calls
+_NODE_DIRS = [
+    r"C:\Program Files\nodejs",
+    r"C:\Program Files (x86)\nodejs",
+    os.path.expandvars(r"%APPDATA%\npm"),
+]
+_extra = os.pathsep.join(d for d in _NODE_DIRS if os.path.isdir(d))
+if _extra:
+    os.environ["PATH"] = _extra + os.pathsep + os.environ.get("PATH", "")
 
 BRAND_TEMPLATE = {
     "institute_name": "Your Institute Name",
@@ -56,9 +67,12 @@ BRAND_TEMPLATE = {
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
+_IS_WIN = sys.platform == "win32"
+
+
 def check_node() -> bool:
     try:
-        r = subprocess.run(["node", "--version"], capture_output=True, text=True)
+        r = subprocess.run(["node", "--version"], capture_output=True, text=True, shell=_IS_WIN)
         return r.returncode == 0
     except FileNotFoundError:
         return False
@@ -66,14 +80,14 @@ def check_node() -> bool:
 
 def check_npm() -> bool:
     try:
-        r = subprocess.run(["npm", "--version"], capture_output=True, text=True)
+        r = subprocess.run(["npm", "--version"], capture_output=True, text=True, shell=_IS_WIN)
         return r.returncode == 0
     except FileNotFoundError:
         return False
 
 
 def run(cmd: list, cwd: str = None) -> int:
-    return subprocess.run(cmd, cwd=cwd).returncode
+    return subprocess.run(cmd, cwd=cwd, shell=_IS_WIN).returncode
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────

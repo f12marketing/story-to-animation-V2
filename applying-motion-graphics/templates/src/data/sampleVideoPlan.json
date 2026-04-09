@@ -1,0 +1,82 @@
+[
+  {
+    "scene_number": 1,
+    "duration": 5,
+    "purpose": "Brand intro — establish identity and hook the viewer",
+    "voiceover": "Welcome to the future of learning.",
+    "visual": "Deep dark background with golden particle constellation slowly forming a logo",
+    "motion_graphics": ["LOGO_ANIMATION", "KINETIC_TYPOGRAPHY", "SHAPE_ANIMATION"],
+    "transition": "fade",
+    "motion_intensity": "high"
+  },
+  {
+    "scene_number": 2,
+    "duration": 6,
+    "purpose": "Introduce the core problem or topic",
+    "voiceover": "Every great journey begins with a single question.",
+    "visual": "Warm amber gradient, bokeh background, cinematic",
+    "motion_graphics": ["TRANSITION", "KINETIC_TYPOGRAPHY", "LOWER_THIRD"],
+    "transition": "zoom",
+    "motion_intensity": "medium"
+  },
+  {
+    "scene_number": 3,
+    "duration": 5,
+    "purpose": "Show key statistic or data point",
+    "voiceover": "Over 90 percent of learners retain more with visual storytelling.",
+    "visual": "Dark teal background with subtle grid lines",
+    "motion_graphics": ["TRANSITION", "INFOGRAPHIC_ANIMATION", "PROGRESS_BAR"],
+    "transition": "fade",
+    "motion_intensity": "medium"
+  },
+  {
+    "scene_number": 4,
+    "duration": 5,
+    "purpose": "Demonstrate a product feature or concept via UI",
+    "voiceover": "Our platform guides you step by step, click by click.",
+    "visual": "Clean white UI mockup on device screen",
+    "motion_graphics": ["TRANSITION", "UI_ANIMATION", "BROLL_OVERLAY"],
+    "transition": "whip",
+    "motion_intensity": "high"
+  },
+  {
+    "scene_number": 5,
+    "duration": 4,
+    "purpose": "Visual energy beat — reinforce brand energy",
+    "voiceover": "Bold. Clear. Unstoppable.",
+    "visual": "High contrast dark with pulsing geometric shapes",
+    "motion_graphics": ["TRANSITION", "SHAPE_ANIMATION", "KINETIC_TYPOGRAPHY"],
+    "transition": "glitch",
+    "motion_intensity": "high"
+  },
+  {
+    "scene_number": 6,
+    "duration": 6,
+    "purpose": "Speaker or testimonial introduction",
+    "voiceover": "Dr. Priya Menon, Head of Learning Design, shares her experience.",
+    "visual": "Soft blurred background, speaker on screen",
+    "motion_graphics": ["TRANSITION", "LOWER_THIRD", "BROLL_OVERLAY"],
+    "transition": "fade",
+    "motion_intensity": "low"
+  },
+  {
+    "scene_number": 7,
+    "duration": 5,
+    "purpose": "Call to action — drive viewer to next step",
+    "voiceover": "Start your free trial today. No credit card required.",
+    "visual": "Vibrant gradient background, energetic feel",
+    "motion_graphics": ["TRANSITION", "CTA_ANIMATION", "KINETIC_TYPOGRAPHY"],
+    "transition": "zoom",
+    "motion_intensity": "high"
+  },
+  {
+    "scene_number": 8,
+    "duration": 6,
+    "purpose": "Brand outro — close with identity and tagline",
+    "voiceover": "Empowering minds. One story at a time.",
+    "visual": "Dark background fading to brand primary color",
+    "motion_graphics": ["TRANSITION", "LOGO_ANIMATION", "SHAPE_ANIMATION"],
+    "transition": "fade",
+    "motion_intensity": "medium"
+  }
+]

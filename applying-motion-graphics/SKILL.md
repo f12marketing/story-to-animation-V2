@@ -147,3 +147,68 @@ After the render completes, present this EXACTLY:
 ```
 
 **NEVER** mark the pipeline as complete without explicit user approval.
+
+Approval keywords: `done`, `looks great`, `approved`, `perfect`, `all good`, `ship it`, `complete`
+
+---
+
+## Memory Cleanup (MANDATORY after approval)
+
+Once the user approves the final output, IMMEDIATELY ask for permission to clear
+project memory. Present this EXACTLY — do not skip, do not auto-clear:
+
+```
+✅ Pipeline complete! Your video is ready at final_animation_branded.mp4.
+
+🗑️ Memory Cleanup
+The following project files are no longer needed for a new project:
+
+  Project data  : story.md, characters.json, backgrounds.json, shots.json, project.config.json
+  Generated imgs: composites/ (shot composite images)
+  Generated clips: clips/ (raw video clips)
+  Remotion cache: remotion_project/public/ (copied assets)
+
+  ⚠️  final_animation.mp4 and final_animation_branded.mp4 will NOT be deleted.
+  ⚠️  brand.json and logo.png will NOT be deleted (reused for next project).
+  ⚠️  remotion_project/ source code will NOT be deleted.
+
+May I clear the project data files to prepare a clean workspace for your
+next animation project?
+
+  → Type "yes, clear" or "clear memory" to delete the files listed above.
+  → Type "no" or "keep" to leave everything as-is.
+```
+
+**Rules:**
+- NEVER delete any files without receiving explicit "yes, clear" or "clear memory" confirmation
+- If the user says "no", "keep", or anything other than an explicit confirmation → do nothing
+- If confirmed, delete ONLY these files/directories:
+  - `story.md`
+  - `characters.json`
+  - `backgrounds.json`
+  - `shots.json`
+  - `project.config.json`
+  - `composites/` directory and all contents
+  - `clips/` directory and all contents
+  - `audio/` directory and all contents (voiceover files)
+  - `remotion_project/public/final_animation.mp4` (the copied asset, not the original)
+  - `remotion_project/src/composition-data.json` (generated render data)
+- After deletion, confirm:
+
+```
+🧹 Memory cleared. The following were removed:
+  ✓ story.md
+  ✓ characters.json
+  ✓ backgrounds.json
+  ✓ shots.json
+  ✓ project.config.json
+  ✓ composites/ ([X] files)
+  ✓ clips/ ([X] files)
+  ✓ audio/ ([X] files, if present)
+  ✓ remotion_project/public/final_animation.mp4
+  ✓ remotion_project/src/composition-data.json
+
+  Preserved: final_animation.mp4, final_animation_branded.mp4, brand.json, logo.png
+
+Ready for your next project! Start with a new story logline anytime.
+```

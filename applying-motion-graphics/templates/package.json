@@ -6,6 +6,7 @@
     "build": "remotion render src/index.ts MainComposition output.mp4"
   },
   "dependencies": {
+    "@fal-ai/client": "^1.0.0",
     "@remotion/cli": "^4.0.0",
     "remotion": "^4.0.0",
     "react": "^18.3.1",

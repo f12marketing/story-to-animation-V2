@@ -214,3 +214,74 @@ UX improvement	generate_videos.py (--regenerate flag)
 Feature addition	merge_clips.py (auto voiceover mixing)
 Pipeline wiring	SKILL.md (motion graphics as mandatory Phase 5)
 Auto-trigger	settings.json (UserPromptSubmit hook)
+
+
+============================================
+
+Changes
+-------
+
+✅ COMPLETE UPDATED CHANGE LIST
+🎥 Video Generation & Processing
+Replaced KIE Sora 2 with Vidu Q3 Image-to-Video Turbo to generate 3-second video clips per scene at 360p resolution.
+Implemented clip calculation logic where total video duration is divided by 3 seconds to determine the number of clips.
+Added Topaz Video Upscaler (fal.ai) to upscale the final stitched video to 720p.
+Shifted from static frame-based video generation to a multi-clip AI video pipeline for improved motion realism.
+🧠 AI & LLM Integration
+Replaced all prior LLM usage with OpenRouter (fal.ai) for centralized model access.
+Standardized the AI model to Claude Sonnet 4.6 for generating structured video plans.
+Introduced an AI-powered generateVideoPlan layer to convert user inputs into structured scene-based JSON.
+Added strict JSON validation and fallback handling to ensure stable parsing of AI outputs.
+🎬 Scene-Based Video Architecture (Major Upgrade)
+Introduced a VideoPlan JSON schema to define videos as structured sequences of scenes.
+Defined a Scene object with properties like duration, voiceover, visuals, transitions, and motion graphics.
+Added support for motion types such as typography, UI animation, infographics, and CTA animations.
+Extended scene schema with motion_intensity to control animation aggressiveness dynamically.
+Enabled scene-based rendering instead of linear rendering for better storytelling control.
+🎨 Motion Graphics System (Remotion Core)
+Integrated Remotion as the primary rendering engine replacing FFmpeg for composition.
+Created modular motion components (e.g., KineticTypography, CTAAnimation, LogoAnimation) under /components/motion/.
+Ensured each motion component uses Remotion primitives like interpolate, spring, and useCurrentFrame.
+Built a reusable SceneRenderer component to dynamically render scenes based on JSON input.
+Updated main video composition (Video.tsx) to map and render scenes sequentially using frame-based timing.
+Implemented motion-to-component mapping logic (e.g., KINETIC_TYPOGRAPHY → animated captions).
+🎞️ Rendering & Animation Enhancements
+Added transition support (fade, zoom, whip, glitch) between scenes via a dedicated Transition component.
+Enabled caption rendering and optional voiceover synchronization per scene.
+Allowed hybrid rendering combining AI-generated video clips and motion graphics scenes.
+Added support for slideshow-style videos using only Remotion without AI video generation.
+🔊 Audio & Voice
+Replaced native ElevenLabs integration with ElevenLabs Turbo v2.5 (fal.ai) for unified API usage.
+Enabled per-scene voiceover generation and synchronization within the timeline.
+🖼️ Image Generation & Editing
+Replaced KIE Flux-2 Pro with FLUX 2 Pro Edit for image editing tasks.
+Replaced KIE Nano Banana Pro with Nano Banana for image generation.
+☁️ Storage & Infrastructure
+Replaced imgbb with Cloudflare R2 for scalable storage of images, clips, and final videos.
+Added CDN-backed delivery using Cloudflare for faster global asset access.
+Updated .env configuration to include fal.ai API keys and Cloudflare R2 credentials.
+⚙️ Backend Architecture Improvements
+Refactored the system into modular services (scene planner, image generator, video generator, renderer, etc.).
+Introduced a queue-based processing system (e.g., BullMQ) for handling asynchronous video generation.
+Added cost optimization logic to differentiate between preview and final render modes.
+🎯 Personalization & Branding
+Enabled dynamic brand personalization including logos, colors, and mascots across scenes.
+Added support for logo-based end screens using motion graphics.
+Enabled customizable templates for use cases like ads, reels, and explainer videos.
+🧩 Developer Experience & Testing
+Added /data/sampleVideoPlan.json for testing rendering without AI dependency.
+Ensured all animation logic is modular and reusable with no hardcoding in main composition files.
+Maintained backward compatibility by refactoring instead of breaking existing functionality.
+🚀 Advanced Capabilities
+Enabled hybrid video generation combining AI-generated clips and motion graphics in a single pipeline.
+Added support for pure motion-graphics videos (no AI video generation) for cost-efficient rendering.
+Introduced timeline intelligence via scene-based durations instead of fixed-length rendering.
+⚡ Final Summary
+
+You have transformed the system from:
+
+basic story-to-video script
+
+into:
+
+AI-directed, scene-based, modular motion graphics video engine with hybrid rendering
